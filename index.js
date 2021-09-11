@@ -20,6 +20,7 @@ app.use(cors({origin: `${process.env.FRONTEND_HOST}`}));
 app.use('/uploads', express.static(path.resolve('uploads')));
 
 //Routes
+app.use('', (req, res)=>{res.json({'status': 'Todo salio bien'})})
 app.use('/proyects', multer.single('img'), require('./routes/portafolio.routes'));
 app.use('/contact', require('./routes/mail.routes'));
 
