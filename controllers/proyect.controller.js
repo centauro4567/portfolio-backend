@@ -27,6 +27,10 @@ proyectCtrl.deleteProyect = async (req, res)=> {
 }
 
 proyectCtrl.editProyect = async (req, res)=>{
+
+    const proyectFound = await proyect.findById(req.params.id)
+    fs.unlink(proyectFound.imgPath, (err)=>{console.log(err)})
+    
     const { id } = req.params
     const editedProyect = {
         name: req.body.name,
@@ -34,6 +38,7 @@ proyectCtrl.editProyect = async (req, res)=>{
         langs: req.body.langs,
         imgPath: req.file.path
     }
+
     await proyect.findByIdAndUpdate(id, {$set: editedProyect}, {new: true})
     res.json(editedProyect)
 }
