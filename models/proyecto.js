@@ -6,6 +6,7 @@ const proyectSchema = new schema({
     description: {type:String, required:true},
     langs: {type:String, required:true},
     imgPath: {type:String, required:true},
+    imgId: {type:String, required:true},
     real: {type:Boolean, default:false}
 })
 

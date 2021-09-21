@@ -16,9 +16,6 @@ app.set('port', process.env.PORT);
 app.use(express.json());
 app.use(cors({origin: `${process.env.FRONTEND_HOST}`}));
 
-//Uploads folder
-app.use('/uploads', express.static(path.resolve('uploads')));
-
 //Routes
 app.use('/proyects', multer.single('img'), require('./routes/portafolio.routes'));
 app.use('/contact', require('./routes/mail.routes'));
